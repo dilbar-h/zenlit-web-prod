@@ -133,10 +133,66 @@ export default function Index() {
         </div>
       </div>
 
-      {/* Placeholder for rest of the page */}
-      <div className="max-w-[1400px] mx-auto mt-8 p-8 text-center text-gray-600">
-        <p className="text-lg">More sections coming soon...</p>
-        <p className="text-sm mt-2">Continue prompting to add more content to this wellness app!</p>
+      {/* Features Section */}
+      <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-20 py-12 md:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+          {/* Feature 1: Chat with empathy */}
+          <div className="flex flex-col gap-6">
+            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/9920dd70971bf2fe7ecc484b0aa6fb348584df66?width=816"
+                alt="Chat interface showing empathetic AI conversation"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-purple-dark font-inter text-2xl md:text-[28px] md:leading-9 font-medium">
+                Chat with empathy
+              </h3>
+              <p className="text-gray-text font-inter text-base leading-6 font-normal">
+                Have meaningful conversations with an AI that listens, understands and responds with care.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature 2: Speak your mind */}
+          <div className="flex flex-col gap-6">
+            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/be53db6acb631ac59464ed02a1296b5557bba851?width=816"
+                alt="Voice message interface with audio controls"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-purple-dark font-inter text-2xl md:text-[28px] md:leading-9 font-medium">
+                Speak your mind
+              </h3>
+              <p className="text-gray-text font-inter text-base leading-6 font-normal">
+                Send voice messages and let your emotions flow naturally without needing to type.
+              </p>
+            </div>
+          </div>
+
+          {/* Feature 3: Your space is safe */}
+          <div className="flex flex-col gap-6">
+            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/92e90a704968e7c81621de7314f14d7d7efa4fff?width=816"
+                alt="Security interface showing privacy protection"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-purple-dark font-inter text-2xl md:text-[28px] md:leading-9 font-medium">
+                Your space is safe
+              </h3>
+              <p className="text-gray-text font-inter text-base leading-6 font-normal">
+                Everything you share stays private. Zenlit is built with end to end privacy in mind.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
