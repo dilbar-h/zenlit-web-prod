@@ -135,10 +135,10 @@ export default function Index() {
 
       {/* Features Section */}
       <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-20 py-12 md:py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+        <div className="flex flex-wrap justify-center gap-7">
           {/* Feature 1: Chat with empathy */}
-          <div className="flex flex-col gap-6">
-            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+          <div className="flex flex-col gap-6 w-[408px]">
+            <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/9920dd70971bf2fe7ecc484b0aa6fb348584df66?width=816"
                 alt="Chat interface showing empathetic AI conversation"
