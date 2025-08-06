@@ -23,6 +23,7 @@ export default {
         'purple-card': '#CCBEFF',
         'purple-dark': '#0A051A',
         'gray-text': '#5F5A69',
+        'gray-border': '#CAC4CF',
         'zenlit': {
           50: '#F5EEFF',
           400: '#CCBEFF',
