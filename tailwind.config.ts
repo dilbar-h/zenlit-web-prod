@@ -25,6 +25,8 @@ export default {
         'gray-text': '#5F5A69',
         'gray-border': '#CAC4CF',
         'gray-dark': '#1C1929',
+        'gray-footer': '#0F0E16',
+        'gray-copyright': '#797381',
         'zenlit': {
           50: '#F5EEFF',
           400: '#CCBEFF',
