@@ -20,9 +20,12 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         'purple-light': '#F5EEFF',
+        'purple-card': '#CCBEFF',
         'purple-dark': '#0A051A',
+        'gray-text': '#5F5A69',
         'zenlit': {
           50: '#F5EEFF',
+          400: '#CCBEFF',
           900: '#0A051A',
         },
         primary: {
