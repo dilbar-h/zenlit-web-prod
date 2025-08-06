@@ -175,8 +175,8 @@ export default function Index() {
           </div>
 
           {/* Feature 3: Your space is safe */}
-          <div className="flex flex-col gap-6">
-            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+          <div className="flex flex-col gap-6 w-[408px]">
+            <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/92e90a704968e7c81621de7314f14d7d7efa4fff?width=816"
                 alt="Security interface showing privacy protection"
