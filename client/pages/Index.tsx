@@ -300,6 +300,32 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      {/* Get the Zenlit App Section */}
+      <div className="w-full px-20 py-10">
+        <div className="mt-[60px]">
+          <div className="flex items-center gap-10 p-6 bg-gray-dark rounded-[40px]">
+            {/* QR Code */}
+            <div className="relative w-[292px] h-[292px]">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/25805b85ee9b7ab1a9bb9121e0ef8891b372b99b?width=584"
+                alt="QR code to download Zenlit app"
+                className="w-[292px] h-[292px] object-cover"
+              />
+            </div>
+
+            {/* Text Content */}
+            <div className="w-[800px] flex flex-col gap-3">
+              <h2 className="text-white font-inter text-[48px] leading-[64px] font-medium">
+                Get the Zenlit App
+              </h2>
+              <p className="text-white font-inter text-2xl leading-8 font-normal opacity-80">
+                Scan the code to start your journey toward calm, clarity and everyday support for your mind.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
