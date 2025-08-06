@@ -107,36 +107,61 @@ const Navigation = () => {
 
 export default function Index() {
   return (
-    <div className="min-h-screen bg-white p-5">
-      {/* Main Container */}
-      <div className="relative w-full max-w-[1400px] mx-auto h-[720px] bg-purple-light rounded-[40px] overflow-hidden">
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <img
-            src="https://api.builder.io/api/v1/image/assets/TEMP/b2f6470dea3d9d1ea8d7ce36c0c897d8796d36ae?width=2824"
-            alt="Peaceful person in dreamy landscape"
-            className="w-full h-full object-cover object-center"
-            style={{
-              transform: "scale(1.01) translateY(-12%)",
-            }}
-          />
-        </div>
+    <div className="min-h-screen bg-white">
+      {/* Outer Container - 1440px width with 20px padding */}
+      <div className="w-full max-w-[1440px] h-[760px] p-5 mx-auto flex justify-center items-center">
+        {/* Main Container - 1400px width, 720px height */}
+        <div className="relative w-[1400px] h-[720px] bg-purple-light rounded-[40px] overflow-hidden">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/b2f6470dea3d9d1ea8d7ce36c0c897d8796d36ae?width=2824"
+              alt="Peaceful person in dreamy landscape"
+              className="absolute w-[1412px] h-[981px] object-cover"
+              style={{
+                left: "-6px",
+                top: "-180px",
+              }}
+            />
+          </div>
 
-        {/* Navigation */}
-        <div className="relative z-10 flex justify-center pt-6">
-          <Navigation />
-        </div>
+          {/* Navigation - Positioned exactly as in Figma */}
+          <div className="absolute z-10" style={{ left: "477px", top: "24px" }}>
+            <div className="inline-flex items-center gap-6 px-6 py-2 pr-2 rounded-full border border-white/16 bg-black/32 backdrop-blur-[40px] w-[447px] h-[64px]">
+              {/* Logo */}
+              <div className="flex items-center">
+                <ZenlitLogo />
+              </div>
 
-        {/* Main Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center text-center px-4 md:px-8 lg:px-16 h-full pt-16 md:pt-0">
-          <div className="max-w-[844px] mx-auto space-y-4">
+              {/* Navigation Links */}
+              <div className="flex items-center gap-6 flex-1">
+                <a href="#features" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                  Features
+                </a>
+                <a href="#faq" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                  FAQ
+                </a>
+                <a href="#contact" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                  Contact
+                </a>
+              </div>
+
+              {/* Get Zenlit Button */}
+              <button className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors">
+                Get Zenlit
+              </button>
+            </div>
+          </div>
+
+          {/* Main Content - Positioned exactly as in Figma */}
+          <div className="absolute z-10 flex flex-col items-center gap-4 w-[844px]" style={{ left: "278px", top: "136px" }}>
             {/* Main Heading */}
-            <h1 className="text-white font-inter text-3xl md:text-4xl lg:text-[56px] lg:leading-[76px] font-medium">
+            <h1 className="text-white font-inter text-[56px] leading-[76px] font-medium text-center w-full">
               Start your wellness journey
             </h1>
 
             {/* Subtitle */}
-            <p className="text-white font-inter text-base md:text-lg lg:text-xl lg:leading-7 font-normal max-w-2xl mx-auto">
+            <p className="text-white font-inter text-xl leading-7 font-normal text-center w-full">
               Zenlit is your AI companion for calm, clarity and support through
               mindful conversation.
             </p>
