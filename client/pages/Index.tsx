@@ -208,7 +208,7 @@ export default function Index() {
 
       {/* Features Section */}
       <div className="w-full px-20 py-15">
-        <div className="flex justify-center gap-7">
+        <div className="flex justify-center gap-7 mt-15">
           {/* Feature 1: Chat with empathy */}
           <div className="flex flex-col gap-6 w-[408px]">
             <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
