@@ -197,7 +197,7 @@ export default function Index() {
 
       {/* Start the conversation Section */}
       <div className="w-full px-20 py-15">
-        <div className="flex items-center gap-20">
+        <div className="flex items-center gap-20 mt-15">
           {/* Text Content */}
           <div className="flex-1 flex flex-col gap-3">
             <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium">
