@@ -331,7 +331,7 @@ export default function Index() {
       <div className="w-full px-20 pt-20 pb-10">
         <div className="flex flex-col gap-15">
           {/* Main Footer Content */}
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between items-center mb-15">
             {/* Left side - Logo and Navigation */}
             <div className="flex items-center gap-14">
               <ZenlitLogo isFooter={true} />
