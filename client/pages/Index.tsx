@@ -194,6 +194,30 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      {/* Start the conversation Section */}
+      <div className="w-full px-20 py-15">
+        <div className="flex items-center gap-20">
+          {/* Text Content */}
+          <div className="flex-1 flex flex-col gap-3">
+            <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium">
+              Start the conversation
+            </h2>
+            <p className="text-gray-text font-inter text-xl leading-7 font-normal">
+              Connect with your AI companion to share thoughts, ask questions and get gentle support whenever you need it.
+            </p>
+          </div>
+
+          {/* Phone Mockup */}
+          <div className="flex justify-center items-center">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/36d0687079c20b1937dd45b1f438f68c9a5a930b?width=1252"
+              alt="Zenlit app interface on mobile phone"
+              className="w-[626px] h-[576px] rounded-[40px]"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
