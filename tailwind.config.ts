@@ -19,6 +19,12 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        'purple-light': '#F5EEFF',
+        'purple-dark': '#0A051A',
+        'zenlit': {
+          50: '#F5EEFF',
+          900: '#0A051A',
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",
