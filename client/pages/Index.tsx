@@ -218,6 +218,30 @@ export default function Index() {
           </div>
         </div>
       </div>
+
+      {/* Support your mind Section */}
+      <div className="w-full px-20 py-15">
+        <div className="flex items-center gap-20 mt-[60px]">
+          {/* Phone Mockup */}
+          <div className="flex justify-center items-center">
+            <img
+              src="https://api.builder.io/api/v1/image/assets/TEMP/66be1563d1bfa9431c6a9bcdcc2e927683ae2cfd?width=1252"
+              alt="Zenlit Discover screen showing books, meditation and mood tracking"
+              className="w-[626px] h-[576px] rounded-[40px]"
+            />
+          </div>
+
+          {/* Text Content */}
+          <div className="w-[574px] flex flex-col gap-3">
+            <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium">
+              Support your mind
+            </h2>
+            <p className="text-gray-text font-inter text-xl leading-7 font-normal">
+              Discover calming resources like books, meditation and mood tracking to support your daily wellbeing.
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
