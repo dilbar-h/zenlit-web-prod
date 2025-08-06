@@ -377,9 +377,9 @@ export default function Index() {
           </div>
 
           {/* Bottom Section - Divider and Copyright */}
-          <div className="flex flex-col gap-6">
+          <div className="flex flex-col">
             <div className="h-px w-full bg-gray-border"></div>
-            <p className="text-gray-copyright font-inter text-base font-medium">
+            <p className="text-gray-copyright font-inter text-base font-medium mt-6">
               © Zenlit 2025
             </p>
           </div>
