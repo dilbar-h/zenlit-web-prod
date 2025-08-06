@@ -3,7 +3,7 @@ import { useState } from "react";
 const ZenlitLogo = ({ isFooter = false }) => (
   <svg
     className={isFooter ? "w-10 h-10" : "w-8 h-8"}
-    viewBox="0 0 40 40"
+    viewBox={isFooter ? "0 0 40 40" : "0 0 32 32"}
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
