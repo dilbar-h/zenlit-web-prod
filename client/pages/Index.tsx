@@ -7,7 +7,7 @@ const ZenlitLogo = ({ isFooter = false }) => (
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
-{isFooter ? (
+    {isFooter ? (
       <>
         <path
           fillRule="evenodd"
@@ -160,13 +160,22 @@ export default function Index() {
 
               {/* Navigation Links */}
               <div className="flex items-center gap-6 flex-1">
-                <a href="#features" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                <a
+                  href="#features"
+                  className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
+                >
                   Features
                 </a>
-                <a href="#faq" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                <a
+                  href="#faq"
+                  className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
+                >
                   FAQ
                 </a>
-                <a href="#contact" className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors">
+                <a
+                  href="#contact"
+                  className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
+                >
                   Contact
                 </a>
               </div>
@@ -179,7 +188,10 @@ export default function Index() {
           </div>
 
           {/* Main Content - Positioned exactly as in Figma */}
-          <div className="absolute z-10 flex flex-col items-center gap-4 w-[844px]" style={{ left: "278px", top: "136px" }}>
+          <div
+            className="absolute z-10 flex flex-col items-center gap-4 w-[844px]"
+            style={{ left: "278px", top: "136px" }}
+          >
             {/* Main Heading */}
             <h1 className="text-white font-inter text-[56px] leading-[76px] font-medium text-center w-full">
               Start your wellness journey
