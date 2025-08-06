@@ -134,8 +134,8 @@ export default function Index() {
       </div>
 
       {/* Features Section */}
-      <div className="max-w-[1400px] mx-auto px-4 md:px-8 lg:px-20 py-12 md:py-16">
-        <div className="flex flex-wrap justify-center gap-7">
+      <div className="w-full px-20 py-15">
+        <div className="flex justify-center gap-7">
           {/* Feature 1: Chat with empathy */}
           <div className="flex flex-col gap-6 w-[408px]">
             <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
