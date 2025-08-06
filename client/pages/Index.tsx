@@ -156,8 +156,8 @@ export default function Index() {
           </div>
 
           {/* Feature 2: Speak your mind */}
-          <div className="flex flex-col gap-6">
-            <div className="relative h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
+          <div className="flex flex-col gap-6 w-[408px]">
+            <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
               <img
                 src="https://api.builder.io/api/v1/image/assets/TEMP/be53db6acb631ac59464ed02a1296b5557bba851?width=816"
                 alt="Voice message interface with audio controls"
