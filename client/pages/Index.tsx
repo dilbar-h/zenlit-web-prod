@@ -329,7 +329,7 @@ export default function Index() {
 
       {/* Footer Section */}
       <div className="w-full px-20 pt-20 pb-10">
-        <div className="flex flex-col gap-15">
+        <div className="flex flex-col">
           {/* Main Footer Content */}
           <div className="flex justify-between items-center mb-15">
             {/* Left side - Logo and Navigation */}
