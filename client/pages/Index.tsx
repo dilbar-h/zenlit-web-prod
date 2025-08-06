@@ -334,7 +334,7 @@ export default function Index() {
           <div className="flex justify-between items-center">
             {/* Left side - Logo and Navigation */}
             <div className="flex items-center gap-14">
-              <ZenlitLogo />
+              <ZenlitLogo isFooter={true} />
               <nav className="flex items-center gap-14">
                 <a href="#features" className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity">
                   Features
