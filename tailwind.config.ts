@@ -24,6 +24,7 @@ export default {
         'purple-dark': '#0A051A',
         'gray-text': '#5F5A69',
         'gray-border': '#CAC4CF',
+        'gray-dark': '#1C1929',
         'zenlit': {
           50: '#F5EEFF',
           400: '#CCBEFF',
