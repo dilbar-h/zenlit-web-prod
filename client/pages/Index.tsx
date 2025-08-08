@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import QRCode from "qrcode";
 
 const ZenlitLogo = ({ isFooter = false }) => (
   <svg
@@ -130,8 +131,145 @@ const Navigation = () => {
   );
 };
 
+// FAQ Item Component
+const FAQItem = ({ question, answer, isExpanded, onToggle, isMobile = false }) => {
+  const MinusIcon = () => (
+    <svg
+      className={isMobile ? "w-8 h-8" : "w-10 h-10"}
+      viewBox={isMobile ? "0 0 32 32" : "0 0 40 40"}
+      fill="none"
+    >
+      <path
+        d={isMobile 
+          ? "M24.0001 17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+          : "M29.9999 21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
+        }
+        fill="#0A051A"
+      />
+    </svg>
+  );
+
+  const PlusIcon = () => (
+    <svg
+      className={isMobile ? "w-8 h-8" : "w-10 h-10"}
+      viewBox={isMobile ? "0 0 32 32" : "0 0 40 40"}
+      fill="none"
+    >
+      <path
+        d={isMobile
+          ? "M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+          : "M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
+        }
+        fill="#0A051A"
+      />
+    </svg>
+  );
+
+  if (isMobile) {
+    return (
+      <div className={`w-full ${isExpanded ? 'pt-5 pb-8' : 'py-5'} border-b border-gray-border`}>
+        <div className="flex justify-between items-center w-full">
+          <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
+            {question}
+          </h3>
+          <button onClick={onToggle} className="flex-shrink-0">
+            {isExpanded ? <MinusIcon /> : <PlusIcon />}
+          </button>
+        </div>
+        {isExpanded && (
+          <p className="w-full text-gray-text font-inter text-base leading-6 font-normal mt-4">
+            {answer}
+          </p>
+        )}
+      </div>
+    );
+  }
+
+  return (
+    <div className={`${isExpanded ? 'flex flex-col' : 'flex justify-between items-center'} py-6 border-b border-gray-border`}>
+      <div className="flex justify-between items-center w-full mb-4">
+        <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
+          {question}
+        </h3>
+        <button onClick={onToggle} className="flex-shrink-0">
+          {isExpanded ? <MinusIcon /> : <PlusIcon />}
+        </button>
+      </div>
+      {isExpanded && (
+        <p className="w-[960px] text-gray-text font-inter text-xl leading-7 font-normal">
+          {answer}
+        </p>
+      )}
+    </div>
+  );
+};
+
 export default function Index() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [expandedFAQ, setExpandedFAQ] = useState(0); // 0 = first FAQ expanded by default
+
+  const faqData = [
+    {
+      question: "What is Zenlit?",
+      answer: "Zenlit is an AI-powered companion designed to support your mental wellbeing through calming conversations, guided voice interactions, and self-care tools."
+    },
+    {
+      question: "Is my data private?",
+      answer: "Yes, your data is completely private. Zenlit uses end-to-end encryption to ensure all your conversations and personal information remain secure and confidential."
+    },
+    {
+      question: "Can I use Zenlit without talking?",
+      answer: "Absolutely! While Zenlit supports voice interactions, you can also use text-based conversations. The app is designed to be flexible and accommodate your preferred communication style."
+    },
+    {
+      question: "Is Zenlit a replacement for therapy?",
+      answer: "No, Zenlit is not a replacement for professional therapy. It's designed to provide emotional support and mindfulness tools, but we always recommend seeking professional help when needed."
+    }
+  ];
+
+  const handleFAQToggle = (index) => {
+    setExpandedFAQ(expandedFAQ === index ? -1 : index);
+  };
+
+  // Scroll to section function
+  const scrollToSection = (sectionId) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth',
+        block: 'start'
+      });
+    }
+  };
+
+  // Handle contact click
+  const handleContactClick = () => {
+    window.location.href = 'mailto:support@zenlit.co';
+  };
+
+  // QR Code state
+  const [qrCodeDataUrl, setQrCodeDataUrl] = useState("");
+
+  // Generate QR code for LinkedIn
+  useEffect(() => {
+    const generateQRCode = async () => {
+      try {
+        const qrDataUrl = await QRCode.toDataURL("https://www.linkedin.com/company/zenlit-mental-health/", {
+          width: 292,
+          margin: 2,
+          color: {
+            dark: "#0A051A",
+            light: "#FFFFFF"
+          }
+        });
+        setQrCodeDataUrl(qrDataUrl);
+      } catch (error) {
+        console.error("Error generating QR code:", error);
+      }
+    };
+
+    generateQRCode();
+  }, []);
 
   return (
     <div className="min-h-screen bg-white">
@@ -144,11 +282,11 @@ export default function Index() {
               {/* Background Image */}
               <div className="absolute inset-0">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/b2f6470dea3d9d1ea8d7ce36c0c897d8796d36ae?width=2824"
+                  src="/baner.png"
                   alt="Peaceful person in dreamy landscape"
                   className="absolute w-[1412px] h-[981px] object-cover"
                   style={{
-                    left: "-6px",
+                    left: "0px",
                     top: "-180px",
                   }}
                 />
@@ -159,7 +297,13 @@ export default function Index() {
                 className="absolute z-10"
                 style={{ left: "477px", top: "24px" }}
               >
-                <div className="inline-flex items-center gap-6 px-6 py-2 pr-2 rounded-full border border-white/16 bg-black/32 backdrop-blur-[40px] w-[447px] h-[64px]">
+                <div 
+                  className="inline-flex items-center gap-6 px-6 py-2 pr-2 rounded-full backdrop-blur-[40px] w-[447px] h-[64px] relative"
+                  style={{ 
+                    backgroundColor: 'rgba(0, 0, 0, 0.32)',
+                    border: '1px solid rgba(255, 255, 255, 0.16)'
+                  }}
+                >
                   {/* Logo */}
                   <div className="flex items-center">
                     <ZenlitLogo />
@@ -167,28 +311,31 @@ export default function Index() {
 
                   {/* Navigation Links */}
                   <div className="flex items-center gap-6 flex-1">
-                    <a
-                      href="#features"
+                    <button
+                      onClick={() => scrollToSection('features')}
                       className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
                     >
                       Features
-                    </a>
-                    <a
-                      href="#faq"
+                    </button>
+                    <button
+                      onClick={() => scrollToSection('faq')}
                       className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
                     >
                       FAQ
-                    </a>
-                    <a
-                      href="#contact"
+                    </button>
+                    <button
+                      onClick={handleContactClick}
                       className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
                     >
                       Contact
-                    </a>
+                    </button>
                   </div>
 
                   {/* Get Zenlit Button */}
-                  <button className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors">
+                  <button 
+                    onClick={() => scrollToSection('contact')}
+                    className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
+                  >
                     Get Zenlit
                   </button>
                 </div>
@@ -219,7 +366,7 @@ export default function Index() {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/4b029af8101609844d7c60a2f74ab6425d5a28d4?width=2300"
+              src="/baner.png"
               alt="Peaceful person in dreamy landscape"
               className="w-full h-auto object-cover min-h-[799px]"
             />
@@ -227,17 +374,26 @@ export default function Index() {
 
           {/* Mobile Navigation */}
           <div className="absolute top-4 left-4 right-4 z-10">
-            <nav className="flex items-center justify-between px-6 py-2 rounded-[32px] border border-white/16 bg-black/32 backdrop-blur-[40px] h-16">
+            <nav 
+              className="flex items-center justify-between px-6 py-2 rounded-[32px] backdrop-blur-[40px] h-16"
+              style={{ 
+                backgroundColor: 'rgba(0, 0, 0, 0.32)',
+                border: '1px solid rgba(255, 255, 255, 0.16)'
+              }}
+            >
               {/* Logo */}
               <div className="flex items-center">
                 <ZenlitLogo />
               </div>
 
-              {/* Get Zenlit Button */}
-              <div className="flex items-center gap-2">
-                <button className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors">
-                  Get Zenlit
-                </button>
+                                {/* Get Zenlit Button */}
+                  <div className="flex items-center gap-2">
+                    <button 
+                      onClick={() => scrollToSection('contact')}
+                      className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
+                    >
+                      Get Zenlit
+                    </button>
                 {/* Menu Button */}
                 <button
                   onClick={() => setIsMobileMenuOpen(true)}
@@ -268,7 +424,13 @@ export default function Index() {
           {/* Mobile Menu Overlay */}
           {isMobileMenuOpen && (
             <div className="absolute top-4 left-4 right-4 z-20 lg:hidden">
-              <nav className="w-full h-[232px] rounded-[32px] border border-white/16 bg-black/32 backdrop-blur-[40px]">
+              <nav 
+                className="w-full h-[232px] rounded-[32px] backdrop-blur-[40px]"
+                style={{ 
+                  backgroundColor: 'rgba(0, 0, 0, 0.32)',
+                  border: '1px solid rgba(255, 255, 255, 0.16)'
+                }}
+              >
                 {/* Header - Logo, Get Zenlit Button and Close Button */}
                 <div className="flex items-center justify-between px-6 py-2 h-16">
                   {/* Logo */}
@@ -278,7 +440,13 @@ export default function Index() {
 
                   {/* Get Zenlit Button and Close Button */}
                   <div className="flex items-center gap-2">
-                    <button className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors">
+                    <button 
+                      onClick={() => {
+                        scrollToSection('contact');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
+                    >
                       Get Zenlit
                     </button>
                     <button
@@ -297,27 +465,33 @@ export default function Index() {
 
                 {/* Navigation Links */}
                 <div className="flex flex-col px-6 h-[156px]">
-                  <a
-                    href="#features"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  <button
+                    onClick={() => {
+                      scrollToSection('features');
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="flex items-center h-[52px] py-3 border-b border-white/20 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
                   >
                     Features
-                  </a>
-                  <a
-                    href="#faq"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  </button>
+                  <button
+                    onClick={() => {
+                      scrollToSection('faq');
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="flex items-center h-[52px] py-3 border-b border-white/20 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
                   >
                     FAQ
-                  </a>
-                  <a
-                    href="#contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
+                  </button>
+                  <button
+                    onClick={() => {
+                      handleContactClick();
+                      setIsMobileMenuOpen(false);
+                    }}
                     className="flex items-center h-[52px] py-3 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
                   >
                     Contact
-                  </a>
+                  </button>
                 </div>
               </nav>
             </div>
@@ -326,7 +500,7 @@ export default function Index() {
       </div>
 
       {/* Features Section */}
-      <div className="w-full">
+      <div id="features" className="w-full">
         {/* Desktop Features */}
         <div className="hidden lg:block px-20 py-15">
           <div className="flex justify-center gap-7 mt-15 max-w-[1280px] mx-auto">
@@ -334,7 +508,7 @@ export default function Index() {
             <div className="flex flex-col gap-6 w-[408px]">
               <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/9920dd70971bf2fe7ecc484b0aa6fb348584df66?width=816"
+                  src="/card-1.png"
                   alt="Chat interface showing empathetic AI conversation"
                   className="w-full h-full object-cover"
                 />
@@ -354,7 +528,7 @@ export default function Index() {
             <div className="flex flex-col gap-6 w-[408px]">
               <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/be53db6acb631ac59464ed02a1296b5557bba851?width=816"
+                  src="/card-2.png"
                   alt="Voice message interface with audio controls"
                   className="w-full h-full object-cover"
                 />
@@ -374,7 +548,7 @@ export default function Index() {
             <div className="flex flex-col gap-6 w-[408px]">
               <div className="relative w-[408px] h-[360px] rounded-[40px] bg-purple-card overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/92e90a704968e7c81621de7314f14d7d7efa4fff?width=816"
+                  src="/card-3.png"
                   alt="Security interface showing privacy protection"
                   className="w-full h-full object-cover"
                 />
@@ -399,7 +573,7 @@ export default function Index() {
             <div className="flex flex-col gap-5 flex-shrink-0">
               <div className="relative w-[296px] h-[261px] rounded-[28px] overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/853a2556ddb87cbb589737adb159ce4a7878a0c1?width=592"
+                  src="/card-1.png"
                   alt="Chat interface showing empathetic AI conversation"
                   className="w-full h-full object-cover"
                 />
@@ -419,7 +593,7 @@ export default function Index() {
             <div className="flex flex-col gap-5 flex-shrink-0">
               <div className="relative w-[296px] h-[261px] rounded-[28px] bg-purple-card overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/93f2788985a60af8877b250d34a26222f3c53ade?width=592"
+                  src="/card-2.png"
                   alt="Voice message interface with audio controls"
                   className="w-full h-full object-cover"
                 />
@@ -439,7 +613,7 @@ export default function Index() {
             <div className="flex flex-col gap-5 flex-shrink-0">
               <div className="relative w-[296px] h-[261px] rounded-[28px] bg-purple-card overflow-hidden">
                 <img
-                  src="https://api.builder.io/api/v1/image/assets/TEMP/947ba0b5de967e66f67deee46ec7a5fe4de49942?width=592"
+                  src="/card-3.png"
                   alt="Security interface showing privacy protection"
                   className="w-full h-full object-cover"
                 />
@@ -477,7 +651,7 @@ export default function Index() {
             {/* Phone Mockup */}
             <div className="flex justify-center items-center">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/36d0687079c20b1937dd45b1f438f68c9a5a930b?width=1252"
+                src="/f-1.png"
                 alt="Zenlit app interface on mobile phone"
                 className="w-[626px] h-[576px] rounded-[40px]"
               />
@@ -502,7 +676,7 @@ export default function Index() {
             {/* Phone Mockup */}
             <div className="flex justify-center items-center w-full">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/5f5c9cce3143b4dbec01ef457fe96f91b1263ea9?width=686"
+                src="/f-1.png"
                 alt="Zenlit app interface on mobile phone"
                 className="w-[343px] h-[316px] rounded-[28px]"
               />
@@ -519,7 +693,7 @@ export default function Index() {
             {/* Phone Mockup */}
             <div className="flex justify-center items-center">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/66be1563d1bfa9431c6a9bcdcc2e927683ae2cfd?width=1252"
+                src="/f-2.png"
                 alt="Zenlit Discover screen showing books, meditation and mood tracking"
                 className="w-[626px] h-[576px] rounded-[40px]"
               />
@@ -555,7 +729,7 @@ export default function Index() {
             {/* Phone Mockup */}
             <div className="flex justify-center items-center w-full">
               <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/e779252e92a90bcdc4514cc1b17675b5a8f3bd05?width=686"
+                src="/f-2.png"
                 alt="Zenlit Discover screen showing books, meditation and mood tracking"
                 className="w-[343px] h-[316px] rounded-[28px]"
               />
@@ -565,7 +739,7 @@ export default function Index() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full">
+      <div id="faq" className="w-full">
         {/* Desktop FAQ */}
         <div className="hidden lg:block px-20 py-15">
           <div className="flex flex-col items-center gap-7 mt-[60px] max-w-[1280px] mx-auto">
@@ -576,80 +750,15 @@ export default function Index() {
 
             {/* FAQ Items */}
             <div className="flex flex-col w-full">
-              {/* FAQ 1 - Expanded by default */}
-              <div className="flex flex-col py-6 border-b border-gray-border">
-                <div className="flex justify-between items-center w-full mb-4">
-                  <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
-                    What is Zenlit?
-                  </h3>
-                  <svg
-                    className="w-10 h-10 flex-shrink-0"
-                    viewBox="0 0 40 40"
-                    fill="none"
-                  >
-                    <path
-                      d="M29.9999 21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
-                      fill="#0A051A"
-                    />
-                  </svg>
-                </div>
-                <p className="w-[960px] text-gray-text font-inter text-xl leading-7 font-normal">
-                  Zenlit is an AI-powered companion designed to support your
-                  mental wellbeing through calming conversations, guided voice
-                  interactions, and self-care tools.
-                </p>
-              </div>
-
-              {/* FAQ 2 - Collapsed */}
-              <div className="flex justify-between items-center py-6 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
-                  Is my data private?
-                </h3>
-                <svg
-                  className="w-10 h-10 flex-shrink-0"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                >
-                  <path
-                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
-
-              {/* FAQ 3 - Collapsed */}
-              <div className="flex justify-between items-center py-6 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
-                  Can I use Zenlit without talking?
-                </h3>
-                <svg
-                  className="w-10 h-10 flex-shrink-0"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                >
-                  <path
-                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
-
-              {/* FAQ 4 - Collapsed */}
-              <div className="flex justify-between items-center py-6 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
-                  Is Zenlit a replacement for therapy?
-                </h3>
-                <svg
-                  className="w-10 h-10 flex-shrink-0"
-                  viewBox="0 0 40 40"
-                  fill="none"
-                >
-                  <path
-                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
+              {faqData.map((item, index) => (
+                <FAQItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  isExpanded={expandedFAQ === index}
+                  onToggle={() => handleFAQToggle(index)}
+                />
+              ))}
             </div>
           </div>
         </div>
@@ -658,112 +767,53 @@ export default function Index() {
         <div className="block lg:hidden w-full px-4 py-8 h-[592px]">
           <div className="flex flex-col items-center gap-5">
             {/* FAQ Title */}
-            <h2 className="text-purple-dark font-inter text-[28px] leading-[36px] font-medium text-center w-full">
+            <h2 className="text-purple-dark font-inter text-[28px] leading-[36px] font-medium text-left w-full">
               Frequently Asked Questions
             </h2>
 
             {/* FAQ Items */}
             <div className="flex flex-col items-start w-full">
-              {/* FAQ 1 - Expanded by default */}
-              <div className="flex flex-col justify-center items-start gap-4 w-full pt-5 pb-8 border-b border-gray-border">
-                <div className="flex justify-between items-center w-full">
-                  <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
-                    What is Zenlit?
-                  </h3>
-                  <svg
-                    className="w-8 h-8 flex-shrink-0"
-                    viewBox="0 0 32 32"
-                    fill="none"
-                  >
-                    <path
-                      d="M24.0001 17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                      fill="#0A051A"
-                    />
-                  </svg>
-                </div>
-                <p className="w-full text-gray-text font-inter text-base leading-6 font-normal">
-                  Zenlit is an AI-powered companion designed to support your
-                  mental wellbeing through calming conversations, guided voice
-                  interactions, and self-care tools.
-                </p>
-              </div>
-
-              {/* FAQ 2 - Collapsed */}
-              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
-                  Is my data private?
-                </h3>
-                <svg
-                  className="w-8 h-8 flex-shrink-0"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                >
-                  <path
-                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
-
-              {/* FAQ 3 - Collapsed */}
-              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
-                  Can I use Zenlit without talking?
-                </h3>
-                <svg
-                  className="w-8 h-8 flex-shrink-0"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                >
-                  <path
-                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
-
-              {/* FAQ 4 - Collapsed */}
-              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
-                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
-                  Is Zenlit a replacement for therapy?
-                </h3>
-                <svg
-                  className="w-8 h-8 flex-shrink-0"
-                  viewBox="0 0 32 32"
-                  fill="none"
-                >
-                  <path
-                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                    fill="#0A051A"
-                  />
-                </svg>
-              </div>
+              {faqData.map((item, index) => (
+                <FAQItem
+                  key={index}
+                  question={item.question}
+                  answer={item.answer}
+                  isExpanded={expandedFAQ === index}
+                  onToggle={() => handleFAQToggle(index)}
+                  isMobile={true}
+                />
+              ))}
             </div>
           </div>
         </div>
       </div>
 
       {/* Get the Zenlit App Section - Hidden on mobile */}
-      <div className="hidden lg:block w-full px-20 py-10">
+      <div id="contact" className="hidden lg:block w-full px-20 py-10">
         <div className="mt-[60px]">
           <div className="flex items-center gap-10 p-6 bg-gray-dark rounded-[40px]">
             {/* QR Code */}
             <div className="relative w-[292px] h-[292px]">
-              <img
-                src="https://api.builder.io/api/v1/image/assets/TEMP/25805b85ee9b7ab1a9bb9121e0ef8891b372b99b?width=584"
-                alt="QR code to download Zenlit app"
-                className="w-[292px] h-[292px] object-cover"
-              />
+              {qrCodeDataUrl ? (
+                <img
+                  src={qrCodeDataUrl}
+                  alt="QR code to visit Zenlit LinkedIn page"
+                  className="w-[292px] h-[292px] object-cover rounded-lg"
+                />
+              ) : (
+                <div className="w-[292px] h-[292px] bg-white border-2 border-gray-300 rounded-lg flex items-center justify-center">
+                  <div className="text-gray-500 text-sm">Loading QR Code...</div>
+                </div>
+              )}
             </div>
 
             {/* Text Content */}
             <div className="w-[800px] flex flex-col gap-3">
               <h2 className="text-white font-inter text-[48px] leading-[64px] font-medium">
-                Get the Zenlit App
+                Connect with Zenlit
               </h2>
               <p className="text-white font-inter text-2xl leading-8 font-normal opacity-80">
-                Scan the code to start your journey toward calm, clarity and
-                everyday support for your mind.
+                Scan the code to visit our LinkedIn page and stay updated with our latest news, updates, and mental health insights.
               </p>
             </div>
           </div>
@@ -776,7 +826,7 @@ export default function Index() {
         <div className="hidden lg:block px-20 pt-20 pb-10">
           <div className="flex flex-col max-w-[1280px] mx-auto">
             {/* Main Footer Content */}
-            <div className="flex justify-between items-center mb-15">
+            <div className="flex justify-between items-center" style={{ marginBottom: "60px" }}>
               {/* Left side - Logo and Navigation */}
               <div className="flex items-center gap-14">
                 <ZenlitLogo isFooter={true} />
@@ -794,7 +844,7 @@ export default function Index() {
                     FAQ
                   </a>
                   <a
-                    href="#contact"
+                    href="mailto:support@zenlit.co"
                     className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
                   >
                     Contact
@@ -808,14 +858,16 @@ export default function Index() {
                 </nav>
               </div>
 
-              {/* Right side - Social Media Icons */}
-              <div className="flex items-center gap-5">
-                {/* LinkedIn */}
-                <a
-                  href="#"
-                  className="hover:opacity-80 transition-opacity"
-                  aria-label="LinkedIn"
-                >
+                          {/* Right side - Social Media Icons */}
+            <div className="flex items-center gap-5">
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/company/zenlit-mental-health/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:opacity-80 transition-opacity"
+                aria-label="LinkedIn"
+              >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M19 3C19.5304 3 20.0391 3.21071 20.4142 3.58579C20.7893 3.96086 21 4.46957 21 5V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H19ZM18.5 18.5V13.2C18.5 12.3354 18.1565 11.5062 17.5452 10.8948C16.9338 10.2835 16.1046 9.94 15.24 9.94C14.39 9.94 13.4 10.46 12.92 11.24V10.13H10.13V18.5H12.92V13.57C12.92 12.8 13.54 12.17 14.31 12.17C14.6813 12.17 15.0374 12.3175 15.2999 12.5801C15.5625 12.8426 15.71 13.1987 15.71 13.57V18.5H18.5ZM6.88 8.56C7.32556 8.56 7.75288 8.383 8.06794 8.06794C8.383 7.75288 8.56 7.32556 8.56 6.88C8.56 5.95 7.81 5.19 6.88 5.19C6.43178 5.19 6.00193 5.36805 5.68499 5.68499C5.36805 6.00193 5.19 6.43178 5.19 6.88C5.19 7.81 5.95 8.56 6.88 8.56ZM8.27 18.5V10.13H5.5V18.5H8.27Z"
@@ -879,7 +931,9 @@ export default function Index() {
               <div className="flex items-center gap-5">
                 {/* LinkedIn */}
                 <a
-                  href="#"
+                  href="https://www.linkedin.com/company/zenlit-mental-health/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:opacity-80 transition-opacity"
                   aria-label="LinkedIn"
                 >
@@ -945,7 +999,7 @@ export default function Index() {
               {/* Second Row */}
               <div className="flex items-center gap-4 w-full">
                 <a
-                  href="#contact"
+                  href="mailto:support@zenlit.co"
                   className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Contact
