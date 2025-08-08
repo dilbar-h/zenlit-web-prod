@@ -754,13 +754,44 @@ export default function Index() {
       </div>
 
       {/* Footer Section */}
-      <div className="w-full px-4 lg:px-20 pt-8 lg:pt-20 pb-10">
-        <div className="flex flex-col max-w-none lg:max-w-[1280px] mx-auto">
-          {/* Main Footer Content */}
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center mb-8 lg:mb-15">
-            {/* Logo and Social Icons - Mobile Layout */}
-            <div className="flex justify-between items-center mb-8 lg:hidden">
-              <ZenlitLogo isFooter={true} />
+      <div className="w-full">
+        {/* Desktop Footer */}
+        <div className="hidden lg:block px-20 pt-20 pb-10">
+          <div className="flex flex-col max-w-[1280px] mx-auto">
+            {/* Main Footer Content */}
+            <div className="flex justify-between items-center mb-15">
+              {/* Left side - Logo and Navigation */}
+              <div className="flex items-center gap-14">
+                <ZenlitLogo isFooter={true} />
+                <nav className="flex items-center gap-14">
+                  <a
+                    href="#features"
+                    className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
+                  >
+                    Features
+                  </a>
+                  <a
+                    href="#faq"
+                    className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
+                  >
+                    FAQ
+                  </a>
+                  <a
+                    href="#contact"
+                    className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
+                  >
+                    Contact
+                  </a>
+                  <a
+                    href="#privacy"
+                    className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
+                  >
+                    Privacy Policy
+                  </a>
+                </nav>
+              </div>
+
+              {/* Right side - Social Media Icons */}
               <div className="flex items-center gap-5">
                 {/* LinkedIn */}
                 <a
@@ -809,9 +840,25 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Desktop Layout */}
-            <div className="hidden lg:flex lg:items-center lg:gap-14">
+            {/* Bottom Section - Divider and Copyright */}
+            <div className="flex flex-col">
+              <div className="h-px w-full bg-gray-border"></div>
+              <p className="text-gray-copyright font-inter text-base font-medium mt-6">
+                © Zenlit 2025
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Footer */}
+        <div className="block lg:hidden w-full px-4 py-8 bg-white h-[276px]">
+          <div className="flex flex-col items-start gap-8">
+            {/* Top Row - Logo and Social Icons */}
+            <div className="flex justify-between items-center w-full">
+              {/* Logo */}
               <ZenlitLogo isFooter={true} />
+
+              {/* Social Icons */}
               <div className="flex items-center gap-5">
                 {/* LinkedIn */}
                 <a
@@ -860,73 +907,48 @@ export default function Index() {
               </div>
             </div>
 
-            {/* Navigation Links */}
-            <div className="flex flex-col gap-8 lg:hidden">
-              <div className="flex justify-between items-center">
+            {/* Navigation Links Grid */}
+            <div className="flex flex-col justify-center items-start gap-8 w-full">
+              {/* First Row */}
+              <div className="flex items-center gap-4 w-full">
                 <a
                   href="#features"
-                  className="text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
+                  className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Features
                 </a>
                 <a
                   href="#faq"
-                  className="text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
+                  className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   FAQ
                 </a>
               </div>
-              <div className="flex justify-between items-center">
+
+              {/* Second Row */}
+              <div className="flex items-center gap-4 w-full">
                 <a
                   href="#contact"
-                  className="text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
+                  className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Contact
                 </a>
                 <a
                   href="#privacy"
-                  className="text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
+                  className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Privacy Policy
                 </a>
               </div>
             </div>
 
-            {/* Desktop Navigation - Hidden on mobile */}
-            <nav className="hidden lg:flex lg:items-center lg:gap-14">
-              <a
-                href="#features"
-                className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
-              >
-                Features
-              </a>
-              <a
-                href="#faq"
-                className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
-              >
-                FAQ
-              </a>
-              <a
-                href="#contact"
-                className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
-              >
-                Contact
-              </a>
-              <a
-                href="#privacy"
-                className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
-              >
-                Privacy Policy
-              </a>
-            </nav>
-          </div>
-
-          {/* Bottom Section - Divider and Copyright */}
-          <div className="flex flex-col gap-6 lg:gap-0">
-            <div className="h-px w-full bg-gray-border"></div>
-            <p className="text-gray-copyright font-inter text-base font-medium mt-6">
-              © Zenlit 2025
-            </p>
+            {/* Divider and Copyright */}
+            <div className="flex flex-col items-start gap-6 w-full">
+              <div className="h-px w-full bg-gray-border"></div>
+              <p className="text-gray-copyright font-inter text-base font-medium">
+                © Zenlit 2025
+              </p>
+            </div>
           </div>
         </div>
       </div>
