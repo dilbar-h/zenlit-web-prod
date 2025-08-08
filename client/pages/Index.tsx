@@ -550,88 +550,177 @@ export default function Index() {
       </div>
 
       {/* FAQ Section */}
-      <div className="w-full px-4 lg:px-20 py-8 lg:py-15">
-        <div className="flex flex-col items-center gap-5 lg:gap-7 mt-8 lg:mt-[60px] max-w-none lg:max-w-[1280px] mx-auto">
-          {/* FAQ Title */}
-          <h2 className="text-purple-dark font-inter text-[28px] lg:text-[48px] leading-[36px] lg:leading-[64px] font-medium text-center w-full">
-            Frequently Asked Questions
-          </h2>
+      <div className="w-full">
+        {/* Desktop FAQ */}
+        <div className="hidden lg:block px-20 py-15">
+          <div className="flex flex-col items-center gap-7 mt-[60px] max-w-[1280px] mx-auto">
+            {/* FAQ Title */}
+            <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium text-center w-full">
+              Frequently Asked Questions
+            </h2>
 
-          {/* FAQ Items */}
-          <div className="flex flex-col w-full">
-            {/* FAQ 1 - Expanded by default */}
-            <div className="flex flex-col py-5 lg:py-6 border-b border-gray-border">
-              <div className="flex justify-between items-center w-full mb-4">
-                <h3 className="flex-1 text-purple-dark font-inter text-xl lg:text-[28px] leading-7 lg:leading-9 font-medium pr-4">
-                  What is Zenlit?
+            {/* FAQ Items */}
+            <div className="flex flex-col w-full">
+              {/* FAQ 1 - Expanded by default */}
+              <div className="flex flex-col py-6 border-b border-gray-border">
+                <div className="flex justify-between items-center w-full mb-4">
+                  <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
+                    What is Zenlit?
+                  </h3>
+                  <svg
+                    className="w-10 h-10 flex-shrink-0"
+                    viewBox="0 0 40 40"
+                    fill="none"
+                  >
+                    <path
+                      d="M29.9999 21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
+                      fill="#0A051A"
+                    />
+                  </svg>
+                </div>
+                <p className="w-[960px] text-gray-text font-inter text-xl leading-7 font-normal">
+                  Zenlit is an AI-powered companion designed to support your
+                  mental wellbeing through calming conversations, guided voice
+                  interactions, and self-care tools.
+                </p>
+              </div>
+
+              {/* FAQ 2 - Collapsed */}
+              <div className="flex justify-between items-center py-6 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
+                  Is my data private?
                 </h3>
                 <svg
-                  className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0"
-                  viewBox="0 0 32 32"
+                  className="w-10 h-10 flex-shrink-0"
+                  viewBox="0 0 40 40"
                   fill="none"
                 >
                   <path
-                    d="M24.0001 17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
                     fill="#0A051A"
                   />
                 </svg>
               </div>
-              <p className="text-gray-text font-inter text-base lg:text-xl leading-6 lg:leading-7 font-normal">
-                Zenlit is an AI-powered companion designed to support your
-                mental wellbeing through calming conversations, guided voice
-                interactions, and self-care tools.
-              </p>
-            </div>
 
-            {/* FAQ 2 - Collapsed */}
-            <div className="flex justify-between items-center py-5 lg:py-6 border-b border-gray-border">
-              <h3 className="flex-1 text-purple-dark font-inter text-xl lg:text-[28px] leading-7 lg:leading-9 font-medium pr-4">
-                Is my data private?
-              </h3>
-              <svg
-                className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <path
-                  d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                  fill="#0A051A"
-                />
-              </svg>
-            </div>
+              {/* FAQ 3 - Collapsed */}
+              <div className="flex justify-between items-center py-6 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
+                  Can I use Zenlit without talking?
+                </h3>
+                <svg
+                  className="w-10 h-10 flex-shrink-0"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
+                    fill="#0A051A"
+                  />
+                </svg>
+              </div>
 
-            {/* FAQ 3 - Collapsed */}
-            <div className="flex justify-between items-center py-5 lg:py-6 border-b border-gray-border">
-              <h3 className="flex-1 text-purple-dark font-inter text-xl lg:text-[28px] leading-7 lg:leading-9 font-medium pr-4">
-                Can I use Zenlit without talking?
-              </h3>
-              <svg
-                className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <path
-                  d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                  fill="#0A051A"
-                />
-              </svg>
+              {/* FAQ 4 - Collapsed */}
+              <div className="flex justify-between items-center py-6 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-[28px] leading-9 font-medium">
+                  Is Zenlit a replacement for therapy?
+                </h3>
+                <svg
+                  className="w-10 h-10 flex-shrink-0"
+                  viewBox="0 0 40 40"
+                  fill="none"
+                >
+                  <path
+                    d="M29.9999 21.6634H21.6666V29.9967C21.6666 30.4388 21.491 30.8627 21.1784 31.1753C20.8659 31.4878 20.4419 31.6634 19.9999 31.6634C19.5579 31.6634 19.134 31.4878 18.8214 31.1753C18.5088 30.8627 18.3333 30.4388 18.3333 29.9967V21.6634H9.99992C9.55789 21.6634 9.13397 21.4878 8.82141 21.1753C8.50885 20.8627 8.33325 20.4388 8.33325 19.9967C8.33325 19.5547 8.50885 19.1308 8.82141 18.8182C9.13397 18.5057 9.55789 18.3301 9.99992 18.3301H18.3333V9.99674C18.3333 9.55472 18.5088 9.13079 18.8214 8.81823C19.134 8.50567 19.5579 8.33008 19.9999 8.33008C20.4419 8.33008 20.8659 8.50567 21.1784 8.81823C21.491 9.13079 21.6666 9.55472 21.6666 9.99674V18.3301H29.9999C30.4419 18.3301 30.8659 18.5057 31.1784 18.8182C31.491 19.1308 31.6666 19.5547 31.6666 19.9967C31.6666 20.4388 31.491 20.8627 31.1784 21.1753C30.8659 21.4878 30.4419 21.6634 29.9999 21.6634Z"
+                    fill="#0A051A"
+                  />
+                </svg>
+              </div>
             </div>
+          </div>
+        </div>
 
-            {/* FAQ 4 - Collapsed */}
-            <div className="flex justify-between items-center py-5 lg:py-6 border-b border-gray-border">
-              <h3 className="flex-1 text-purple-dark font-inter text-xl lg:text-[28px] leading-7 lg:leading-9 font-medium pr-4">
-                Is Zenlit a replacement for therapy?
-              </h3>
-              <svg
-                className="w-8 h-8 lg:w-10 lg:h-10 flex-shrink-0"
-                viewBox="0 0 32 32"
-                fill="none"
-              >
-                <path
-                  d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
-                  fill="#0A051A"
-                />
-              </svg>
+        {/* Mobile FAQ */}
+        <div className="block lg:hidden w-full px-4 py-8 h-[592px]">
+          <div className="flex flex-col items-center gap-5">
+            {/* FAQ Title */}
+            <h2 className="text-purple-dark font-inter text-[28px] leading-[36px] font-medium text-center w-full">
+              Frequently Asked Questions
+            </h2>
+
+            {/* FAQ Items */}
+            <div className="flex flex-col items-start w-full">
+              {/* FAQ 1 - Expanded by default */}
+              <div className="flex flex-col justify-center items-start gap-4 w-full pt-5 pb-8 border-b border-gray-border">
+                <div className="flex justify-between items-center w-full">
+                  <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
+                    What is Zenlit?
+                  </h3>
+                  <svg
+                    className="w-8 h-8 flex-shrink-0"
+                    viewBox="0 0 32 32"
+                    fill="none"
+                  >
+                    <path
+                      d="M24.0001 17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+                      fill="#0A051A"
+                    />
+                  </svg>
+                </div>
+                <p className="w-full text-gray-text font-inter text-base leading-6 font-normal">
+                  Zenlit is an AI-powered companion designed to support your mental wellbeing through calming conversations, guided voice interactions, and self-care tools.
+                </p>
+              </div>
+
+              {/* FAQ 2 - Collapsed */}
+              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
+                  Is my data private?
+                </h3>
+                <svg
+                  className="w-8 h-8 flex-shrink-0"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <path
+                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+                    fill="#0A051A"
+                  />
+                </svg>
+              </div>
+
+              {/* FAQ 3 - Collapsed */}
+              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
+                  Can I use Zenlit without talking?
+                </h3>
+                <svg
+                  className="w-8 h-8 flex-shrink-0"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <path
+                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+                    fill="#0A051A"
+                  />
+                </svg>
+              </div>
+
+              {/* FAQ 4 - Collapsed */}
+              <div className="flex items-center gap-4 w-full py-5 border-b border-gray-border">
+                <h3 className="flex-1 text-purple-dark font-inter text-xl leading-7 font-medium">
+                  Is Zenlit a replacement for therapy?
+                </h3>
+                <svg
+                  className="w-8 h-8 flex-shrink-0"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                >
+                  <path
+                    d="M24.0001 17.3307H17.3334V23.9974C17.3334 24.351 17.1929 24.6902 16.9429 24.9402C16.6928 25.1903 16.3537 25.3307 16.0001 25.3307C15.6465 25.3307 15.3073 25.1903 15.0573 24.9402C14.8072 24.6902 14.6667 24.351 14.6667 23.9974V17.3307H8.00008C7.64646 17.3307 7.30732 17.1903 7.05727 16.9402C6.80722 16.6902 6.66675 16.351 6.66675 15.9974C6.66675 15.6438 6.80722 15.3046 7.05727 15.0546C7.30732 14.8045 7.64646 14.6641 8.00008 14.6641H14.6667V7.9974C14.6667 7.64377 14.8072 7.30463 15.0573 7.05459C15.3073 6.80454 15.6465 6.66406 16.0001 6.66406C16.3537 6.66406 16.6928 6.80454 16.9429 7.05459C17.1929 7.30463 17.3334 7.64377 17.3334 7.9974V14.6641H24.0001C24.3537 14.6641 24.6928 14.8045 24.9429 15.0546C25.1929 15.3046 25.3334 15.6438 25.3334 15.9974C25.3334 16.351 25.1929 16.6902 24.9429 16.9402C24.6928 17.1903 24.3537 17.3307 24.0001 17.3307Z"
+                    fill="#0A051A"
+                  />
+                </svg>
+              </div>
             </div>
           </div>
         </div>
