@@ -446,51 +446,105 @@ export default function Index() {
       </div>
 
       {/* Start the conversation Section */}
-      <div className="w-full px-4 lg:px-20 py-8 lg:py-15">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-20 mt-8 lg:mt-[60px] max-w-none lg:max-w-[1280px] mx-auto">
-          {/* Text Content */}
-          <div className="flex-1 flex flex-col gap-3">
-            <h2 className="text-purple-dark font-inter text-[28px] lg:text-[48px] leading-[36px] lg:leading-[64px] font-medium">
-              Start the conversation
-            </h2>
-            <p className="text-gray-text font-inter text-base lg:text-xl leading-6 lg:leading-7 font-normal">
-              Connect with your AI companion to share thoughts, ask questions
-              and get gentle support whenever you need it.
-            </p>
-          </div>
+      <div className="w-full">
+        {/* Desktop Layout */}
+        <div className="hidden lg:block px-20 py-15">
+          <div className="flex items-center gap-20 mt-[60px] max-w-[1280px] mx-auto">
+            {/* Text Content */}
+            <div className="flex-1 flex flex-col gap-3">
+              <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium">
+                Start the conversation
+              </h2>
+              <p className="text-gray-text font-inter text-xl leading-7 font-normal">
+                Connect with your AI companion to share thoughts, ask questions
+                and get gentle support whenever you need it.
+              </p>
+            </div>
 
-          {/* Phone Mockup */}
-          <div className="flex justify-center items-center">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/5f5c9cce3143b4dbec01ef457fe96f91b1263ea9?width=686"
-              alt="Zenlit app interface on mobile phone"
-              className="w-full max-w-[343px] lg:w-[626px] h-auto lg:h-[576px] rounded-[28px] lg:rounded-[40px]"
-            />
+            {/* Phone Mockup */}
+            <div className="flex justify-center items-center">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/36d0687079c20b1937dd45b1f438f68c9a5a930b?width=1252"
+                alt="Zenlit app interface on mobile phone"
+                className="w-[626px] h-[576px] rounded-[40px]"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="block lg:hidden px-4 py-8">
+          <div className="flex flex-col items-start gap-6">
+            {/* Text Content */}
+            <div className="flex flex-col items-start gap-3 h-[120px]">
+              <h2 className="text-purple-dark font-inter text-[28px] leading-[36px] font-medium">
+                Start the conversation
+              </h2>
+              <p className="text-gray-text font-inter text-base leading-6 font-normal">
+                Connect with your AI companion to share thoughts, ask questions and get gentle support whenever you need it.
+              </p>
+            </div>
+
+            {/* Phone Mockup */}
+            <div className="flex justify-center items-center w-full">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/5f5c9cce3143b4dbec01ef457fe96f91b1263ea9?width=686"
+                alt="Zenlit app interface on mobile phone"
+                className="w-[343px] h-[316px] rounded-[28px]"
+              />
+            </div>
           </div>
         </div>
       </div>
 
       {/* Support your mind Section */}
-      <div className="w-full px-4 lg:px-20 py-8 lg:py-15">
-        <div className="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-20 mt-8 lg:mt-[60px] max-w-none lg:max-w-[1280px] mx-auto">
-          {/* Phone Mockup */}
-          <div className="flex justify-center items-center lg:order-first">
-            <img
-              src="https://api.builder.io/api/v1/image/assets/TEMP/e779252e92a90bcdc4514cc1b17675b5a8f3bd05?width=686"
-              alt="Zenlit Discover screen showing books, meditation and mood tracking"
-              className="w-full max-w-[343px] lg:w-[626px] h-auto lg:h-[576px] rounded-[28px] lg:rounded-[40px]"
-            />
-          </div>
+      <div className="w-full">
+        {/* Desktop Layout */}
+        <div className="hidden lg:block px-20 py-15">
+          <div className="flex items-center gap-20 mt-[60px] max-w-[1280px] mx-auto">
+            {/* Phone Mockup */}
+            <div className="flex justify-center items-center">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/66be1563d1bfa9431c6a9bcdcc2e927683ae2cfd?width=1252"
+                alt="Zenlit Discover screen showing books, meditation and mood tracking"
+                className="w-[626px] h-[576px] rounded-[40px]"
+              />
+            </div>
 
-          {/* Text Content */}
-          <div className="lg:w-[574px] flex flex-col gap-3">
-            <h2 className="text-purple-dark font-inter text-[28px] lg:text-[48px] leading-[36px] lg:leading-[64px] font-medium">
-              Support your mind
-            </h2>
-            <p className="text-gray-text font-inter text-base lg:text-xl leading-6 lg:leading-7 font-normal">
-              Discover calming resources like books, meditation and mood
-              tracking to support your daily wellbeing.
-            </p>
+            {/* Text Content */}
+            <div className="w-[574px] flex flex-col gap-3">
+              <h2 className="text-purple-dark font-inter text-[48px] leading-[64px] font-medium">
+                Support your mind
+              </h2>
+              <p className="text-gray-text font-inter text-xl leading-7 font-normal">
+                Discover calming resources like books, meditation and mood
+                tracking to support your daily wellbeing.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Layout */}
+        <div className="block lg:hidden px-4 py-8">
+          <div className="flex flex-col items-start gap-6">
+            {/* Text Content */}
+            <div className="flex flex-col items-start gap-3 h-[120px]">
+              <h2 className="text-purple-dark font-inter text-[28px] leading-[36px] font-medium">
+                Support your mind
+              </h2>
+              <p className="text-gray-text font-inter text-base leading-6 font-normal">
+                Discover calming resources like books, meditation and mood tracking to support your daily wellbeing.
+              </p>
+            </div>
+
+            {/* Phone Mockup */}
+            <div className="flex justify-center items-center w-full">
+              <img
+                src="https://api.builder.io/api/v1/image/assets/TEMP/e779252e92a90bcdc4514cc1b17675b5a8f3bd05?width=686"
+                alt="Zenlit Discover screen showing books, meditation and mood tracking"
+                className="w-[343px] h-[316px] rounded-[28px]"
+              />
+            </div>
           </div>
         </div>
       </div>
