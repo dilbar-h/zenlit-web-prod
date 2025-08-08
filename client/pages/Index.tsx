@@ -131,6 +131,8 @@ const Navigation = () => {
 };
 
 export default function Index() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section - Responsive */}
@@ -234,7 +236,10 @@ export default function Index() {
                   Get Zenlit
                 </button>
                 {/* Menu Button */}
-                <button className="flex items-center justify-center p-3 bg-zenlit-900 rounded-full">
+                <button
+                  onClick={() => setIsMobileMenuOpen(true)}
+                  className="flex items-center justify-center p-3 bg-zenlit-900 rounded-full"
+                >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
                     <path d="M19.75 14.5C20.4404 14.5 21 15.0596 21 15.75C21 16.4404 20.4404 17 19.75 17H11.25C10.5596 17 10 16.4404 10 15.75C10 15.0596 10.5596 14.5 11.25 14.5H19.75ZM19.75 7C20.4404 7 21 7.55964 21 8.25C21 8.94036 20.4404 9.5 19.75 9.5H4.25C3.55964 9.5 3 8.94036 3 8.25C3 7.55964 3.55964 7 4.25 7H19.75Z" fill="white"/>
                   </svg>
@@ -252,6 +257,63 @@ export default function Index() {
               Zenlit is your AI companion for calm, clarity and support through mindful conversation.
             </p>
           </div>
+
+          {/* Mobile Menu Overlay */}
+          {isMobileMenuOpen && (
+            <div className="fixed inset-0 z-50 bg-black/50 lg:hidden">
+              <div className="absolute top-4 left-4 right-4">
+                <nav className="w-full h-[232px] rounded-[32px] border border-white/16 bg-black/32 backdrop-blur-[40px] p-6">
+                  {/* Header */}
+                  <div className="flex items-center justify-between mb-6">
+                    {/* Logo */}
+                    <div className="flex items-center">
+                      <ZenlitLogo />
+                    </div>
+
+                    {/* Get Zenlit Button and Close Button */}
+                    <div className="flex items-center gap-2">
+                      <button className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors">
+                        Get Zenlit
+                      </button>
+                      <button
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center justify-center p-3 bg-zenlit-900 rounded-full"
+                      >
+                        <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
+                          <path d="M17.1161 5.11621C17.6043 4.62806 18.3955 4.62806 18.8837 5.11621C19.3719 5.60437 19.3719 6.39563 18.8837 6.88379L13.7675 12L18.8837 17.1162C19.3719 17.6044 19.3719 18.3956 18.8837 18.8838C18.3955 19.3719 17.6043 19.3719 17.1161 18.8838L11.9999 13.7676L6.88369 18.8838C6.39554 19.3719 5.60427 19.3719 5.11612 18.8838C4.62796 18.3956 4.62796 17.6044 5.11612 17.1162L10.2323 12L5.11612 6.88379C4.62796 6.39563 4.62796 5.60437 5.11612 5.11621C5.60427 4.62806 6.39554 4.62806 6.88369 5.11621L11.9999 10.2324L17.1161 5.11621Z" fill="white"/>
+                        </svg>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* Navigation Links */}
+                  <div className="flex flex-col">
+                    <a
+                      href="#features"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center py-3 border-b border-white/20 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
+                    >
+                      Features
+                    </a>
+                    <a
+                      href="#faq"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center py-3 border-b border-white/20 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
+                    >
+                      FAQ
+                    </a>
+                    <a
+                      href="#contact"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="flex items-center py-3 text-white font-inter text-xl font-medium hover:opacity-80 transition-opacity"
+                    >
+                      Contact
+                    </a>
+                  </div>
+                </nav>
+              </div>
+            </div>
+          )}
         </div>
       </div>
 
