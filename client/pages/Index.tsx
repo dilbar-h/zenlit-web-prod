@@ -155,7 +155,10 @@ export default function Index() {
               </div>
 
               {/* Navigation - Positioned exactly as in Figma */}
-              <div className="absolute z-10" style={{ left: "477px", top: "24px" }}>
+              <div
+                className="absolute z-10"
+                style={{ left: "477px", top: "24px" }}
+              >
                 <div className="inline-flex items-center gap-6 px-6 py-2 pr-2 rounded-full border border-white/16 bg-black/32 backdrop-blur-[40px] w-[447px] h-[64px]">
                   {/* Logo */}
                   <div className="flex items-center">
@@ -203,8 +206,8 @@ export default function Index() {
 
                 {/* Subtitle */}
                 <p className="text-white font-inter text-xl leading-7 font-normal text-center w-full">
-                  Zenlit is your AI companion for calm, clarity and support through
-                  mindful conversation.
+                  Zenlit is your AI companion for calm, clarity and support
+                  through mindful conversation.
                 </p>
               </div>
             </div>
@@ -241,7 +244,10 @@ export default function Index() {
                   className="flex items-center justify-center p-3 bg-zenlit-900 rounded-full"
                 >
                   <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                    <path d="M19.75 14.5C20.4404 14.5 21 15.0596 21 15.75C21 16.4404 20.4404 17 19.75 17H11.25C10.5596 17 10 16.4404 10 15.75C10 15.0596 10.5596 14.5 11.25 14.5H19.75ZM19.75 7C20.4404 7 21 7.55964 21 8.25C21 8.94036 20.4404 9.5 19.75 9.5H4.25C3.55964 9.5 3 8.94036 3 8.25C3 7.55964 3.55964 7 4.25 7H19.75Z" fill="white"/>
+                    <path
+                      d="M19.75 14.5C20.4404 14.5 21 15.0596 21 15.75C21 16.4404 20.4404 17 19.75 17H11.25C10.5596 17 10 16.4404 10 15.75C10 15.0596 10.5596 14.5 11.25 14.5H19.75ZM19.75 7C20.4404 7 21 7.55964 21 8.25C21 8.94036 20.4404 9.5 19.75 9.5H4.25C3.55964 9.5 3 8.94036 3 8.25C3 7.55964 3.55964 7 4.25 7H19.75Z"
+                      fill="white"
+                    />
                   </svg>
                 </button>
               </div>
@@ -254,7 +260,8 @@ export default function Index() {
               Start your wellness journey
             </h1>
             <p className="text-white text-center font-inter text-base leading-6 font-normal">
-              Zenlit is your AI companion for calm, clarity and support through mindful conversation.
+              Zenlit is your AI companion for calm, clarity and support through
+              mindful conversation.
             </p>
           </div>
 
@@ -279,7 +286,10 @@ export default function Index() {
                       className="flex items-center justify-center p-3 bg-zenlit-900 rounded-full"
                     >
                       <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
-                        <path d="M17.1161 5.11621C17.6043 4.62806 18.3955 4.62806 18.8837 5.11621C19.3719 5.60437 19.3719 6.39563 18.8837 6.88379L13.7675 12L18.8837 17.1162C19.3719 17.6044 19.3719 18.3956 18.8837 18.8838C18.3955 19.3719 17.6043 19.3719 17.1161 18.8838L11.9999 13.7676L6.88369 18.8838C6.39554 19.3719 5.60427 19.3719 5.11612 18.8838C4.62796 18.3956 4.62796 17.6044 5.11612 17.1162L10.2323 12L5.11612 6.88379C4.62796 6.39563 4.62796 5.60437 5.11612 5.11621C5.60427 4.62806 6.39554 4.62806 6.88369 5.11621L11.9999 10.2324L17.1161 5.11621Z" fill="white"/>
+                        <path
+                          d="M17.1161 5.11621C17.6043 4.62806 18.3955 4.62806 18.8837 5.11621C19.3719 5.60437 19.3719 6.39563 18.8837 6.88379L13.7675 12L18.8837 17.1162C19.3719 17.6044 19.3719 18.3956 18.8837 18.8838C18.3955 19.3719 17.6043 19.3719 17.1161 18.8838L11.9999 13.7676L6.88369 18.8838C6.39554 19.3719 5.60427 19.3719 5.11612 18.8838C4.62796 18.3956 4.62796 17.6044 5.11612 17.1162L10.2323 12L5.11612 6.88379C4.62796 6.39563 4.62796 5.60437 5.11612 5.11621C5.60427 4.62806 6.39554 4.62806 6.88369 5.11621L11.9999 10.2324L17.1161 5.11621Z"
+                          fill="white"
+                        />
                       </svg>
                     </button>
                   </div>
@@ -354,8 +364,8 @@ export default function Index() {
                   Speak your mind
                 </h3>
                 <p className="text-gray-text font-inter text-base leading-6 font-normal">
-                  Send voice messages and let your emotions flow naturally without
-                  needing to type.
+                  Send voice messages and let your emotions flow naturally
+                  without needing to type.
                 </p>
               </div>
             </div>
@@ -374,8 +384,8 @@ export default function Index() {
                   Your space is safe
                 </h3>
                 <p className="text-gray-text font-inter text-base leading-6 font-normal">
-                  Everything you share stays private. Zenlit is built with end to
-                  end privacy in mind.
+                  Everything you share stays private. Zenlit is built with end
+                  to end privacy in mind.
                 </p>
               </div>
             </div>
@@ -399,7 +409,8 @@ export default function Index() {
                   Chat with empathy
                 </h3>
                 <p className="text-gray-text font-inter text-sm leading-5 font-normal">
-                  Have meaningful conversations with an AI that listens, understands and responds with care.
+                  Have meaningful conversations with an AI that listens,
+                  understands and responds with care.
                 </p>
               </div>
             </div>
@@ -418,7 +429,8 @@ export default function Index() {
                   Speak your mind
                 </h3>
                 <p className="text-gray-text font-inter text-sm leading-5 font-normal">
-                  Send voice messages and let your emotions flow naturally without needing to type.
+                  Send voice messages and let your emotions flow naturally
+                  without needing to type.
                 </p>
               </div>
             </div>
@@ -437,7 +449,8 @@ export default function Index() {
                   Your space is safe
                 </h3>
                 <p className="text-gray-text font-inter text-sm leading-5 font-normal">
-                  Everything you share stays private. Zenlit is built with end to end privacy in mind.
+                  Everything you share stays private. Zenlit is built with end
+                  to end privacy in mind.
                 </p>
               </div>
             </div>
@@ -481,7 +494,8 @@ export default function Index() {
                 Start the conversation
               </h2>
               <p className="text-gray-text font-inter text-base leading-6 font-normal">
-                Connect with your AI companion to share thoughts, ask questions and get gentle support whenever you need it.
+                Connect with your AI companion to share thoughts, ask questions
+                and get gentle support whenever you need it.
               </p>
             </div>
 
@@ -533,7 +547,8 @@ export default function Index() {
                 Support your mind
               </h2>
               <p className="text-gray-text font-inter text-base leading-6 font-normal">
-                Discover calming resources like books, meditation and mood tracking to support your daily wellbeing.
+                Discover calming resources like books, meditation and mood
+                tracking to support your daily wellbeing.
               </p>
             </div>
 
@@ -667,7 +682,9 @@ export default function Index() {
                   </svg>
                 </div>
                 <p className="w-full text-gray-text font-inter text-base leading-6 font-normal">
-                  Zenlit is an AI-powered companion designed to support your mental wellbeing through calming conversations, guided voice interactions, and self-care tools.
+                  Zenlit is an AI-powered companion designed to support your
+                  mental wellbeing through calming conversations, guided voice
+                  interactions, and self-care tools.
                 </p>
               </div>
 
