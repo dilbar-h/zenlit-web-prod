@@ -850,7 +850,7 @@ export default function Index() {
                     Contact
                   </a>
                   <a
-                    href="#privacy"
+                    href="/privacy"
                     className="text-gray-footer font-inter text-base font-medium hover:opacity-80 transition-opacity"
                   >
                     Privacy Policy
@@ -1005,7 +1005,7 @@ export default function Index() {
                   Contact
                 </a>
                 <a
-                  href="#privacy"
+                  href="/privacy"
                   className="flex-1 text-gray-footer font-inter text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Privacy Policy
