@@ -112,59 +112,56 @@ const Navigation = () => {
         </div>
       </div>
 
-      {/* Mobile Navigation */}
+      {/* Mobile Navigation - Figma Design */}
       <div className="block md:hidden">
-        <nav className="flex items-center px-6 py-2 rounded-full border border-white/16 bg-black/32 backdrop-blur-[40px]">
-          {/* Logo */}
-          <div className="flex items-center gap-3 mr-6">
+        <div 
+          className="backdrop-blur-[40px] bg-[rgba(0,0,0,0.32)] relative rounded-[32px] w-[343px] h-16 border border-[rgba(255,255,255,0.16)]"
+        >
+          {/* Logo - positioned exactly as in Figma */}
+          <div className="absolute left-6 top-4 w-8 h-8">
             <a href="/">
               <ZenlitLogo />
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Get Zenlit Button - positioned exactly as in Figma */}
+          <a 
+            href="/#contact"
+            className="absolute left-[152px] top-2 w-[127px] h-12 flex items-center justify-center bg-[#0a051a] text-white rounded-[60px] font-inter text-lg font-medium hover:bg-[#0a051a]/90 transition-colors"
+          >
+            Get Zenlit
+          </a>
+
+          {/* Mobile Menu Button - positioned exactly as in Figma */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="ml-auto text-white"
+            className="absolute left-[287px] top-2 w-12 h-12 flex items-center justify-center bg-[#0a051a] rounded-[60px]"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none">
               <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
+                d="M19.75 14.5C20.4404 14.5 21 15.0596 21 15.75C21 16.4404 20.4404 17 19.75 17H11.25C10.5596 17 10 16.4404 10 15.75C10 15.0596 10.5596 14.5 11.25 14.5H19.75ZM19.75 7C20.4404 7 21 7.55964 21 8.25C21 8.94036 20.4404 9.5 19.75 9.5H4.25C3.55964 9.5 3 8.94036 3 8.25C3 7.55964 3.55964 7 4.25 7H19.75Z"
+                fill="white"
               />
             </svg>
           </button>
+        </div>
 
-          {/* Mobile Menu */}
-          {isMenuOpen && (
-            <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-black/80 backdrop-blur-lg rounded-2xl border border-white/16">
-              <div className="flex flex-col gap-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                <a 
-                  href="/#contact"
-                  className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
+        {/* Mobile Menu Dropdown */}
+        {isMenuOpen && (
+          <div className="absolute top-full left-0 right-0 mt-2 p-4 bg-black/80 backdrop-blur-lg rounded-2xl border border-white/16">
+            <div className="flex flex-col gap-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="text-white font-inter text-base font-medium hover:text-white/80 transition-colors"
                 >
-                  Get Zenlit
+                  {item.label}
                 </a>
-              </div>
+              ))}
             </div>
-          )}
-        </nav>
+          </div>
+        )}
       </div>
     </div>
   );
