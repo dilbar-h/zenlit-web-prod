@@ -250,11 +250,11 @@ export default function Index() {
   // QR Code state
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState("");
 
-  // Generate QR code for LinkedIn
+  // Generate QR code for iOS App Store
   useEffect(() => {
     const generateQRCode = async () => {
       try {
-        const qrDataUrl = await QRCode.toDataURL("https://www.linkedin.com/company/zenlit-mental-health/", {
+        const qrDataUrl = await QRCode.toDataURL("https://apps.apple.com/ee/app/zenlit/id6746420733", {
           width: 292,
           margin: 2,
           color: {
@@ -797,7 +797,7 @@ export default function Index() {
               {qrCodeDataUrl ? (
                 <img
                   src={qrCodeDataUrl}
-                  alt="QR code to visit Zenlit LinkedIn page"
+                  alt="QR code to download Zenlit on the App Store"
                   className="w-[292px] h-[292px] object-cover rounded-lg"
                 />
               ) : (
@@ -810,11 +810,22 @@ export default function Index() {
             {/* Text Content */}
             <div className="w-[800px] flex flex-col gap-3">
               <h2 className="text-white font-inter text-[48px] leading-[64px] font-medium">
-                Connect with Zenlit
+                Get the Zenlit app
               </h2>
               <p className="text-white font-inter text-2xl leading-8 font-normal opacity-80">
-                Scan the code to visit our LinkedIn page and stay updated with our latest news, updates, and mental health insights.
+                Scan the QR to download Zenlit for iPhone from the App Store. Android (Google Play) is coming soon.
               </p>
+              <div className="mt-2 flex items-center gap-4">
+                <a
+                  href="https://apps.apple.com/ee/app/zenlit/id6746420733"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
+                >
+                  Download for iPhone
+                </a>
+                <span className="text-white/80 font-inter text-base">Google Play: coming soon</span>
+              </div>
             </div>
           </div>
         </div>
