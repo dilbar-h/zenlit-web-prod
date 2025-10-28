@@ -247,6 +247,18 @@ export default function Index() {
     window.location.href = 'mailto:support@zenlit.co';
   };
 
+  // Get Zenlit button behavior: open App Store on small screens, scroll on large screens
+  const handleGetZenlitClick = () => {
+    if (typeof window !== 'undefined') {
+      const isSmallScreen = window.matchMedia('(max-width: 1023px)').matches; // < lg
+      if (isSmallScreen) {
+        window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank');
+        return;
+      }
+      scrollToSection('contact');
+    }
+  };
+
   // QR Code state
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState("");
 
@@ -333,7 +345,7 @@ export default function Index() {
 
                   {/* Get Zenlit Button */}
                   <button 
-                    onClick={() => scrollToSection('contact')}
+                    onClick={handleGetZenlitClick}
                     className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
                   >
                     Get Zenlit
@@ -389,7 +401,7 @@ export default function Index() {
                                 {/* Get Zenlit Button */}
                   <div className="flex items-center gap-2">
                     <button 
-                      onClick={() => scrollToSection('contact')}
+                      onClick={() => window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank')}
                       className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
                     >
                       Get Zenlit
@@ -442,7 +454,7 @@ export default function Index() {
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => {
-                        scrollToSection('contact');
+                        window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank');
                         setIsMobileMenuOpen(false);
                       }}
                       className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
