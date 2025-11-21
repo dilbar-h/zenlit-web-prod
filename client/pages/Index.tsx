@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import QRCode from "qrcode";
+import { IOS_APP_URL, ANDROID_APP_URL } from "@shared/links";
 
 const ZenlitLogo = ({ isFooter = false }) => (
   <svg
@@ -207,6 +208,7 @@ const FAQItem = ({ question, answer, isExpanded, onToggle, isMobile = false }) =
 export default function Index() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [expandedFAQ, setExpandedFAQ] = useState(0); // 0 = first FAQ expanded by default
+  const [downloadUrl, setDownloadUrl] = useState("/download");
 
   const faqData = [
     {
@@ -252,7 +254,7 @@ export default function Index() {
     if (typeof window !== 'undefined') {
       const isSmallScreen = window.matchMedia('(max-width: 1023px)').matches; // < lg
       if (isSmallScreen) {
-        window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank');
+        window.open(IOS_APP_URL, '_blank');
         return;
       }
       scrollToSection('contact');
@@ -262,17 +264,26 @@ export default function Index() {
   // QR Code state
   const [qrCodeDataUrl, setQrCodeDataUrl] = useState("");
 
-  // Generate QR code for iOS App Store
+  // Resolve download URL to include the current origin (for QR scans)
   useEffect(() => {
+    if (typeof window !== "undefined") {
+      setDownloadUrl(`${window.location.origin}/download`);
+    }
+  }, []);
+
+  // Generate QR code for the smart download link
+  useEffect(() => {
+    if (!downloadUrl) return;
+
     const generateQRCode = async () => {
       try {
-        const qrDataUrl = await QRCode.toDataURL("https://apps.apple.com/ee/app/zenlit/id6746420733", {
+        const qrDataUrl = await QRCode.toDataURL(downloadUrl, {
           width: 292,
           margin: 2,
           color: {
             dark: "#0A051A",
-            light: "#FFFFFF"
-          }
+            light: "#FFFFFF",
+          },
         });
         setQrCodeDataUrl(qrDataUrl);
       } catch (error) {
@@ -281,7 +292,7 @@ export default function Index() {
     };
 
     generateQRCode();
-  }, []);
+  }, [downloadUrl]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -401,7 +412,7 @@ export default function Index() {
                                 {/* Get Zenlit Button */}
                   <div className="flex items-center gap-2">
                     <button 
-                      onClick={() => window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank')}
+                      onClick={() => window.open(IOS_APP_URL, '_blank')}
                       className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
                     >
                       Get Zenlit
@@ -454,7 +465,7 @@ export default function Index() {
                   <div className="flex items-center gap-2">
                     <button 
                       onClick={() => {
-                        window.open('https://apps.apple.com/ee/app/zenlit/id6746420733', '_blank');
+                        window.open(IOS_APP_URL, '_blank');
                         setIsMobileMenuOpen(false);
                       }}
                       className="flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
@@ -825,18 +836,25 @@ export default function Index() {
                 Get the Zenlit app
               </h2>
               <p className="text-white font-inter text-2xl leading-8 font-normal opacity-80">
-                Scan the QR to download Zenlit for iPhone from the App Store. Android (Google Play) is coming soon.
+                Scan the QR to download Zenlit for iPhone from the App Store, or tap a store button below.
               </p>
-              <div className="mt-2 flex items-center gap-4">
+              <div className="mt-2 flex flex-wrap items-center gap-4">
                 <a
-                  href="https://apps.apple.com/ee/app/zenlit/id6746420733"
+                  href={IOS_APP_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-6 py-3 bg-zenlit-900 text-white rounded-full font-inter text-lg font-medium hover:bg-zenlit-900/90 transition-colors"
                 >
                   Download for iPhone
                 </a>
-                <span className="text-white/80 font-inter text-base">Google Play: coming soon</span>
+                <a
+                  href={ANDROID_APP_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 border border-white/30 text-white rounded-full font-inter text-lg font-medium hover:bg-white/10 transition-colors"
+                >
+                  Download for Android
+                </a>
               </div>
             </div>
           </div>
