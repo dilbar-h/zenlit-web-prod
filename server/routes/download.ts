@@ -1,5 +1,5 @@
 import { RequestHandler } from "express";
-import { ANDROID_APP_URL, IOS_APP_URL } from "@shared/links";
+import { ANDROID_APP_URL, IOS_APP_URL } from "../../shared/links";
 
 const isAndroidDevice = (userAgent: string) => /Android/i.test(userAgent);
 const isIOSDevice = (userAgent: string) =>
